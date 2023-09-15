@@ -39,7 +39,7 @@ By default, you can access your local project at `http://localhost:3000`
 
 ## Tested Models
 
-* [vicuna-7b-v1.5-16k.ggmlv3.q2_K.bin](https://huggingface.co/TheBloke/Wizard-Vicuna-7B-Uncensored-GGML)
+* [vicuna-7b-v1.5-16k.ggmlv3.q2_K.bin](https://huggingface.co/TheBloke/vicuna-7B-v1.5-16K-GGML)
 * [Wizard-Vicuna-7B-Uncensored.ggmlv3.q8_0.bin](https://huggingface.co/TheBloke/Wizard-Vicuna-7B-Uncensored-GGML)
 
 ## By [Khalifa MBA](https://github.com/alfellati)
