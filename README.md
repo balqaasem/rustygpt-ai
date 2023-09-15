@@ -1,48 +1,45 @@
-# rustygpt-ai
+# RustyGPT
 
-A Fullstack Rust Chatbot built with Open Source LLMs using Rustformers and Leptos
+A Fullstack Rust Chatbot built with Open Source LLMs using Rustformers LLM and Leptos.
 
-By [Khalifa MBA](https://github.com/alfellati)
-
-
-## Running your project
-
-`cargo leptos watch`  
-By default, you can access your local project at `http://localhost:3000`
-
-## Installing Additional Tools
+## Installation
 
 By default, `cargo-leptos` uses `nightly` Rust, `cargo-generate`, and `sass`. If you run into any trouble, you may need to install one or more of these tools.
 
-1. `rustup toolchain install nightly --allow-downgrade` - make sure you have Rust nightly
-2. `rustup target add wasm32-unknown-unknown` - add the ability to compile Rust to WebAssembly
-3. `cargo install cargo-generate` - install `cargo-generate` binary (should be installed automatically in future)
-4. `npm install -g sass` - install `dart-sass` (should be optional in future)
+1. `rustup toolchain install nightly --allow-downgrade` - make sure you have Rust nightly.
+2. `rustup target add wasm32-unknown-unknown` - add the ability to compile Rust to WebAssembly.
 
-## Executing a Server on a Remote Machine Without the Toolchain
-After running a `cargo leptos build --release` the minimum files needed are:
+### Rust Toolchain
 
-1. The server binary located in `target/server/release`
-2. The `site` directory and all files within located in `target/site`
+You'll need to use the nightly Rust toolchain, and install the `wasm32-unknown-unknown` target as well as the Trunk and `cargo-leptos` tools:
 
-Copy these files to your remote server. The directory structure should be:
-```text
-rustygpt_ai
-site/
 ```
-Set the following environment variables (updating for your project as needed):
-```sh
-export LEPTOS_OUTPUT_NAME="rustygpt_ai"
-export LEPTOS_SITE_ROOT="site"
-export LEPTOS_SITE_PKG_DIR="pkg"
-export LEPTOS_SITE_ADDR="127.0.0.1:3000"
-export LEPTOS_RELOAD_PORT="3001"
+rustup toolchain install nightly --allow-downgrade
+rustup target add wasm32-unknown-unknown
+cargo install trunk cargo-leptos
 ```
-Finally, run the server binary.
 
-## Notes about CSR and Trunk:
-Although it is not recommended, you can also run your project without server integration using the feature `csr` and `trunk serve`:
+### Model
 
-`trunk serve --open --features csr`
+You'll also need to download a model (in GGML format) of your choice that is [supported by the Rustformers/llm Crate](https://huggingface.co/models?search=ggml).
 
-This may be useful for integrating external tools which require a static site, e.g. `tauri`.
+In the root of the project directory, you'll find a `.env` file where an environment variable called `MODEL_PATH` is defined. Replace the value with the full path to the desired model file.
+
+### TailwindCSS
+
+Install TailwindCSS with `npm install -D tailwindcss`
+
+## Running RustyGPT
+
+To run the project locally, 
+1. run `npx tailwindcss -i ./input.css -o ./style/output.css --watch` in a terminal - this will build `style/output.css` and automatically rebuild when a change is detected in `input.css`
+2. `cargo leptos watch` in the project directory.
+By default, you can access your local project at `http://localhost:3000`
+
+
+## Tested Models
+
+* [vicuna-7b-v1.5-16k.ggmlv3.q2_K.bin](https://huggingface.co/TheBloke/Wizard-Vicuna-7B-Uncensored-GGML)
+* [Wizard-Vicuna-7B-Uncensored.ggmlv3.q8_0.bin](https://huggingface.co/TheBloke/Wizard-Vicuna-7B-Uncensored-GGML)
+
+## By [Khalifa MBA](https://github.com/alfellati)
