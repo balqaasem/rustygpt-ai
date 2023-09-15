@@ -8,12 +8,13 @@ pub struct Conversation {
 impl Conversation {
     pub fn new() -> Conversation {
         Conversation {
-            messages: Vec::new()
+            messages: Vec::new(),
         }
     }
 }
 
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Message {
     pub user: bool,
-    pub text:String,
+    pub text: String,
 }
